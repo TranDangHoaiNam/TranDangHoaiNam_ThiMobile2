@@ -50,7 +50,7 @@ const WelcomeText = () => {
   };
 
   return (
-    <View style={{ alignItems: 'center' }}>
+    <View style={{ alignItems: 'center' , justifyContent: 'center'}}>
       <Animated.Text
         style={{
           opacity: opacity,
