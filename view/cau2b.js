@@ -9,13 +9,13 @@ const App = () => {
       Animated.sequence([
         Animated.timing(colorAnimation, {
           toValue: 3,
-          duration: 4000, // Thời gian hoàn thành 1 vòng là 4 giây
+          duration: 4000, 
           easing: Easing.linear,
           useNativeDriver: false,
         }),
       ]),
       {
-        iterations: -1, // Lặp vô hạn
+        iterations: -1,
       }
     ).start();
   }, []);

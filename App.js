@@ -5,6 +5,7 @@ import Cau1 from './view/cau1.js';
 import Cau2 from './view/cau2.js';
 import Cau2b from './view/cau2b.js';
 import Cau2c from './view/cau2c.js';
+import Cau3a from './view/cau3a.js';
 const App = () => {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -13,6 +14,7 @@ const App = () => {
       <Cau2 />
       <Cau2b />
       <Cau2c />
+      <Cau3a />
     </View>
   );
 };

@@ -45,7 +45,7 @@ const App = () => {
         }),
       ]),
       {
-        iterations: -1, // lặp vô hạn
+        iterations: -1, 
       }
     ).start();
   }, []);
@@ -54,12 +54,12 @@ const App = () => {
     Animated.loop(
       Animated.timing(colorAnimation, {
         toValue: 3,
-        duration: 4000, // 4 giây
+        duration: 4000, 
         easing: Easing.linear,
         useNativeDriver: false,
       }),
       {
-        iterations: -1, // lặp vô hạn
+        iterations: -1, 
       }
     ).start();
   }, []);
