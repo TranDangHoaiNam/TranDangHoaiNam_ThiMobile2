@@ -2,24 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { Animated, Text, View, Image } from 'react-native';
 
 const WelcomeText = () => {
-  const [opacity] = useState(new Animated.Value(0)); // Giá trị mặc định cho opacity là 0
-  const [ballY] = useState(new Animated.Value(-100)); // Giá trị mặc định cho vị trí ban đầu của quả bóng
+  const [opacity] = useState(new Animated.Value(0)); 
+  const [ballY] = useState(new Animated.Value(-100));
+  const [squareScale] = useState(new Animated.Value(0)); 
 
   const welcomeMessage = 'You are welcome!.';
   const delay = 3000 / welcomeMessage.length;
 
   useEffect(() => {
-    animateWelcomeText(); // Gọi hàm animateWelcomeText khi component được mount
-    animateBall(); // Gọi hàm animateBall khi component được mount
+    animateWelcomeText(); 
+    animateBall(); 
+    animateSquare(); 
   }, []);
 
   const animateWelcomeText = () => {
     Animated.timing(
       opacity,
       {
-        toValue: 1, // Giá trị opacity sẽ tăng dần lên 1
-        duration: 3000, // Thời gian để hoàn thành animation là 3 giây
-        useNativeDriver: true // Sử dụng driver native để tối ưu hiệu suất
+        toValue: 1, 
+        duration: 3000, 
+        useNativeDriver: true 
       }
     ).start();
   };
@@ -28,9 +30,21 @@ const WelcomeText = () => {
     Animated.timing(
       ballY,
       {
-        toValue: 200, // Di chuyển từ vị trí -100 (trên cùng) xuống vị trí 200 (dưới cùng)
-        duration: 3000, // Thời gian để hoàn thành animation là 3 giây
-        useNativeDriver: true // Sử dụng driver native để tối ưu hiệu suất
+        toValue: 200, 
+        duration: 3000, 
+        useNativeDriver: true 
+      }
+    ).start();
+  };
+
+  const animateSquare = () => {
+    Animated.spring(
+      squareScale,
+      {
+        toValue: 1, 
+        friction: 2, 
+        tension: 60, 
+        useNativeDriver: true 
       }
     ).start();
   };
@@ -40,8 +54,8 @@ const WelcomeText = () => {
       <Animated.Text
         style={{
           opacity: opacity,
-          fontSize: 24, // Đặt kích thước phù hợp
-          marginBottom: 20 // Khoảng cách dưới của văn bản
+          fontSize: 24, 
+          marginBottom: 20 
         }}
       >
         {welcomeMessage}
@@ -49,9 +63,18 @@ const WelcomeText = () => {
       <Animated.Image
         source={require('./assets/bongda.png')}
         style={{
-          width: 50, // Đặt chiều rộng của hình ảnh
-          height: 50, // Đặt chiều cao của hình ảnh
-          transform: [{ translateY: ballY }] // Áp dụng transform translateY cho di chuyển
+          width: 50, 
+          height: 50, 
+          transform: [{ translateY: ballY }] 
+        }}
+      />
+      <Animated.View
+        style={{
+          width: 50,
+          height: 50,
+          backgroundColor: 'blue',
+          marginTop: 20,
+          transform: [{ scale: squareScale }]
         }}
       />
     </View>
